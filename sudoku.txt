@@ -1,1 +1,6 @@
 Here's a new file.
+Common git commands include:
+- git add
+- git commit
+- git status
+- git push
