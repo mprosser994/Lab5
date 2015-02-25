@@ -72,30 +72,43 @@ void Puzzle<T>::print(){
 // Function to check if a move is valid
 template<typename T>
 int Puzzle<T>::isValid(int i, int j, int x){
+
+  cout << "Begin" << endl;
+
   // Only allow changes to empty spaces
   if(puzzle[i][j] != 0){
     cout << "Sorry! You can't change a number that's already there!" << endl;
     return 0;
   }
+  cout << "Got here: 1" << endl;
 
   // Check row
   for(int k = 0; k < 9; k++){
-    if(puzzle[i][k] == x) cout << "Invalid move!" << endl;
-    return 0;
+    if(puzzle[i][k] == x){
+      cout << "Invalid move!" << endl;
+      return 0;
+    }
   }
+  cout << "Got here: 2" << endl;
 
   // Check column
   for(int k = 0; k < 9; k++){
-    if(puzzle[k][j] == x) cout << "Invalid move!" << endl;
-    return 0;
+    if(puzzle[k][j] == x){
+      cout << "Invalid move!" << endl;
+      return 0;
+    }
   }
+  cout << "Got here: 3" << endl;
 
   // Check current square
   if(i < 3 && j < 3){
+    cout << "Got here: 4" << endl;
     for(int k = 0; k < 3; k++){
       for(int m = 0; m < 3; m++){
-        if(puzzle[k][m] == x) cout << "Invalid move!" << endl;
-        return 0;
+        if(puzzle[k][m] == x){
+          cout << "Invalid move!" << endl;
+          return 0;
+        }
       }
     }
   }else if(i < 3 && j < 6){
@@ -108,56 +121,72 @@ int Puzzle<T>::isValid(int i, int j, int x){
   }else if(i < 3 && j < 9){
     for(int k = 0; k < 3; k++){
       for(int m = 6; m < 9; m++){
-        if(puzzle[k][m] == x) cout << "Invalid move!" << endl;
-        return 0;
+        if(puzzle[k][m] == x){
+          cout << "Invalid move!" << endl;
+          return 0;
+        }
       }
     }
   }else if(i < 6 && j < 3){
     for(int k = 3; k < 6; k++){
       for(int m = 0; m < 3; m++){
-        if(puzzle[k][m] == x) cout << "Invalid move!" << endl;
-        return 0;
+        if(puzzle[k][m] == x){
+          cout << "Invalid move!" << endl;
+          return 0;
+        }
       }
     }
   }else if(i < 6 && j < 6){
     for(int k = 3; k < 6; k++){
       for(int m = 3; m < 6; m++){
-        if(puzzle[k][m] == x) cout << "Invalid move!" << endl;
-        return 0;
+        if(puzzle[k][m] == x){
+          cout << "Invalid move!" << endl;
+          return 0;
+        }
       }
     }
   }else if(i < 6 && j < 9){
     for(int k = 3; k < 6; k++){
       for(int m = 6; m < 9; m++){
-        if(puzzle[k][m] == x) cout << "Invalid move!" << endl;
-        return 0;
+        if(puzzle[k][m] == x){
+          cout << "Invalid move!" << endl;
+          return 0;
+        }
       }
     }
   }else if(i < 9 && j < 3){
     for(int k = 6; k < 9; k++){
       for(int m = 0; m < 3; m++){
-        if(puzzle[k][m] == x) cout << "Invalid move!" << endl;
-        return 0;
+        if(puzzle[k][m] == x){
+          cout << "Invalid move!" << endl;
+          return 0;
+        }
       }
     }
   }else if(i < 9 && j < 6){
     for(int k = 6; k < 9; k++){
       for(int m = 3; m < 6; m++){
-        if(puzzle[k][m] == x) cout << "Invalid move!" << endl;
-        return 0;
+        if(puzzle[k][m] == x){
+          cout << "Invalid move!" << endl;
+          return 0;
+        }
       }
     }
   }else if(i < 9 && j < 9){
     for(int k = 6; k < 9; k++){
       for(int m = 6; m < 9; m++){
-        if(puzzle[k][m] == x) cout << "Invalid move!" << endl;
-        return 0;
+        if(puzzle[k][m] == x){
+          cout << "Invalid move!" << endl;
+          return 0;
+        }
       }
     }
   }
 
+  cout << "Got here: 5" << endl;
   // If no conflict, change current entry to desired value and return 1
   puzzle[i][j] = x;
+  cout << "Got here: 6" << endl;
   return 1;
 }
 
@@ -203,7 +232,7 @@ void Puzzle<T>::play(){
         cout << "Enter the value you'd like to place here: ";
         cin >> entry;
       }while(entry < 1 || entry > 9);
-    }while(isValid(row, column, entry));
+    }while(!isValid(row, column, entry));
 
     cout << endl;
   }
