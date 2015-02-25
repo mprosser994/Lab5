@@ -17,7 +17,7 @@ class Puzzle{
     Puzzle();			 // Default constructor
     void print();		 // Print the puzzle to the screen
     void play();		 // Function to let a user play Sudoku
-    int isValid(int, int, int);	 // Function to check if a move is valid
+    int isValid(int, int, int);	 // Function to check if a move is valid and make the move (or not)
     int isDone();		 // Checks if the game is over
   private:
     vector<vector <T> > puzzle;	 // The puzzle
@@ -179,8 +179,10 @@ template<typename T>
 void Puzzle<T>::play(){
   int row, column, entry;
 
+  cout << "Welcome!" << endl;
+
   while(!isDone()){
-    cout << "Welcome! In this version of Sudoku, pretend you're playing with a pen." << endl;
+    cout << "In this version of Sudoku, pretend you're playing with a pen." << endl;
     cout << "That means once you enter a number, you can't change it," << endl;
     cout << "and if you make a mistake you'll have to start over. Good luck!" << endl;
 
@@ -202,8 +204,12 @@ void Puzzle<T>::play(){
         cin >> entry;
       }while(entry < 1 || entry > 9);
     }while(isValid(row, column, entry));
+
+    cout << endl;
   }
 
+  /* Since it is only possible to complete a puzzle with a valid move, we can
+     assume that isDone returning 1 means the puzzle has been solved. */
   cout << "Congratulations, you solved it!" << endl;
 }
 

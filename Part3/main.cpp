@@ -6,10 +6,6 @@ Driver program to read in different Sudoku and Wordoku puzzles and print them to
 
 int main(){
   Puzzle<int> sudoku;
-  sudoku.print();
 
-  cout << endl;
-
-  Puzzle<char> wordoku;
-  wordoku.print();
+  sudoku.play();
 }
